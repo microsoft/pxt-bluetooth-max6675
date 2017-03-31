@@ -19,7 +19,6 @@ namespace bluetooth {
         } else return false;
     }
 
-    //%
     void max6675SetPeriod(int period) {
         _max6675Period = period;
     }
@@ -41,7 +40,6 @@ namespace bluetooth {
         MicroBitEvent ev(MICROBIT_ID_MAX6675, MICROBIT_THERMOMETER_EVT_UPDATE);
     }
 
-    //%
     int max6675Temperature() {
         return _max6675Temperature;
     }
