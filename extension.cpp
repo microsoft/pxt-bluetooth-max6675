@@ -20,7 +20,7 @@ namespace bluetooth {
     }
 
     void max6675SetPeriod(int period) {
-        _max6675Period = period;
+        _max6675Period = max(20, period);
     }
 
     /**
