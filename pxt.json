@@ -10,9 +10,11 @@
     },
     "files": [
         "README.md",
-        "main.ts",
         "extension.cpp",
+        "extension.h",
         "extension.ts",
+        "service.cpp",
+        "service.h",
         "shims.d.ts",
         "enums.d.ts"
     ],
