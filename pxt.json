@@ -18,5 +18,5 @@
     "testFiles": [
         "tests.ts"
     ],
-    "public": false
+    "public": true
 }
