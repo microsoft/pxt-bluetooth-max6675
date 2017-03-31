@@ -5,7 +5,7 @@ namespace bluetooth {
      */
     //% block
     export function startMax6675Service(pin: DigitalPin) {
-        bluetooth.startTemperatureSensor(1000, () => {
+        bluetooth.startTemperatureSensorService(() => {
             bluetooth.setTemperatureSensorValue(input.max6675Temperature(pin));
         })
     }
