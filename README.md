@@ -8,7 +8,7 @@ This package allows to create a Bluetooth temperature sensor and provide the dat
 any custom sensor attached to the @boardname@. In fact, it can be used to stream any data!
 
 ```blocks
-bluetooth.startTemperatureSensorService(50, () => {
+bluetooth.startTemperatureSensorService(() => {
     bluetooth.setTemperatureSensorValue(input.lightLevel());
 })
 ```

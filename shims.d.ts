@@ -6,7 +6,7 @@ declare namespace bluetooth {
      * to update the temperature sent to the service.
      */
     //% block shim=bluetooth::startTemperatureSensorService
-    function startTemperatureSensorService(period: number, handler: () => void): void;
+    function startTemperatureSensorService(handler: () => void): void;
 
     /**
      * Sets the current temperature value on the external temperature sensor

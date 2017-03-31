@@ -21,10 +21,10 @@ namespace bluetooth {
     * to update the temperature sent to the service.
     */
     //% block
-    void startTemperatureSensorService(int period, Action handler) {
+    void startTemperatureSensorService(Action handler) {
         if (NULL != _pService) return;
 
-        _pService = new TemperatureSensorService(*uBit.ble, period);
+        _pService = new TemperatureSensorService(*uBit.ble);
         _handler = handler;
         pxt::incr(_handler);
         create_fiber(updateTemperature);

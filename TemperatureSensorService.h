@@ -26,7 +26,7 @@ class TemperatureSensorService
       * Create a representation of the TemperatureService
       * @param _ble The instance of a BLE device that we're running on.
       */
-    TemperatureSensorService(BLEDevice &_ble, int period);
+    TemperatureSensorService(BLEDevice &_ble);
 
     /**
       * Callback. Invoked when any of our attributes are written via BLE.

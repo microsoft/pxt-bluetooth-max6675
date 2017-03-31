@@ -12,7 +12,7 @@
   * Create a representation of the TemperatureService
   * @param _ble The instance of a BLE device that we're running on.
   */
-TemperatureSensorService::TemperatureSensorService(BLEDevice &_ble, int period) :
+TemperatureSensorService::TemperatureSensorService(BLEDevice &_ble) :
         ble(_ble)
 {
     // Create the data structures that represent each of our characteristics in Soft Device.
@@ -24,7 +24,7 @@ TemperatureSensorService::TemperatureSensorService(BLEDevice &_ble, int period) 
 
     // Initialise our characteristic values.
     temperatureDataCharacteristicBuffer = 0;
-    temperaturePeriodCharacteristicBuffer = max(1, period);
+    temperaturePeriodCharacteristicBuffer = 1000;
 
     // Set default security requirements
     temperatureDataCharacteristic.requireSecurity(SecurityManager::MICROBIT_BLE_SECURITY_LEVEL);
