@@ -1,23 +1,23 @@
-#ifndef BLUETOOTH_MAX6675_TEMPERATURE_SERVICE_H
-#define BLUETOOTH_MAX6675_TEMPERATURE_SERVICE_H
+#ifndef BLUETOOTH_TEMPERATURE_SENSOR_SERVICE_H
+#define BLUETOOTH_TEMPERATURE_SENSOR_SERVICE_H
 
 #include "MicroBitConfig.h"
 #include "ble/BLE.h"
 #include "MicroBitThermometer.h"
 #include "EventModel.h"
 
-#define MICROBIT_ID_MAX6675 9500
+#define MICROBIT_ID_SENSOR_TEMPERATURE 9500
 
 // UUIDs for our service and characteristics
-extern const uint8_t  Max6675TemperatureServiceUUID[];
-extern const uint8_t  Max6675TemperatureServiceDataUUID[];
-extern const uint8_t  Max6675TemperatureServicePeriodUUID[];
+extern const uint8_t  TemperatureSensorServiceUUID[];
+extern const uint8_t  TemperatureSensorServiceDataUUID[];
+extern const uint8_t  TemperatureSensorServicePeriodUUID[];
 
 /**
   * Class definition for the custom MicroBit Temperature Service.
-  * Provides a BLE service to remotely read the silicon temperature of the nRF51822.
+  * Provides a BLE service to beam any temperature
   */
-class Max6675TemperatureService
+class TemperatureSensorService
 {
     public:
 
@@ -26,7 +26,7 @@ class Max6675TemperatureService
       * Create a representation of the TemperatureService
       * @param _ble The instance of a BLE device that we're running on.
       */
-    Max6675TemperatureService(BLEDevice &_ble);
+    TemperatureSensorService(BLEDevice &_ble, int period);
 
     /**
       * Callback. Invoked when any of our attributes are written via BLE.
@@ -34,11 +34,21 @@ class Max6675TemperatureService
     void onDataWritten(const GattWriteCallbackParams *params);
 
     /**
-     * Temperature update callback
-     */
-    void temperatureUpdate(MicroBitEvent e);
+    * Updates the temperature in the characteristic
+    */
+    void setTemperature(int temp);
+
+    /**
+    * Gets the current period in ms
+    */
+    int getPeriod();
 
     private:
+
+    // Temperature update callback
+    void temperatureUpdate(MicroBitEvent e);
+
+    void setPeriod(int value);
 
     // Bluetooth stack we're running on.
     BLEDevice           	&ble;

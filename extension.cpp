@@ -1,46 +1,42 @@
-#include "MicroBitEvent.h"
-#include "extension.h"
-#include "service.h"
+#include "pxt.h"
+#include "TemperatureSensorService.h"
 
-using namespace pxt;
 namespace bluetooth {
-    Max6675TemperatureService* service = NULL;
-    int _max6675Period = 500;
-    int _max6675Temperature = 0;
+    TemperatureSensorService* _pService = NULL;
+    Action _handler;
 
-    /**
-    *
-    */
-    //%
-    bool internalStartMax6675Service() {
-        if (NULL == service) {
-            service = new Max6675TemperatureService(*uBit.ble);
-            return true;
-        } else return false;
-    }
-
-    void max6675SetPeriod(int period) {
-        _max6675Period = max(20, period);
+    void updateTemperature() {
+        while (NULL != _pService) {
+            // run action that updates the temperature
+            pxt::runAction0(_handler);
+            // raise event to trigger notification
+            MicroBitEvent ev(MICROBIT_ID_SENSOR_TEMPERATURE, MICROBIT_THERMOMETER_EVT_UPDATE);
+            // wait period
+            fiber_sleep(_pService->getPeriod());            
+        }
     }
 
     /**
-    *
+    * Starts a custom sensor service. The handler must call ``setSensorTemperature`` 
+    * to update the temperature sent to the service.
     */
-    //%
-    int max6675Period() {
-        return _max6675Period;
+    //% block
+    void startTemperatureSensorService(int period, Action handler) {
+        if (NULL != _pService) return;
+
+        _pService = new TemperatureSensorService(*uBit.ble, period);
+        _handler = handler;
+        pxt::incr(_handler);
+        create_fiber(updateTemperature);
     }
 
     /**
-    *
+    * Sets the current temperature value on the external temperature sensor
     */
-    //%
-    void max6675SetTemperature(int temperature) {
-        _max6675Temperature = temperature;
-        MicroBitEvent ev(MICROBIT_ID_MAX6675, MICROBIT_THERMOMETER_EVT_UPDATE);
-    }
+    //% block
+    void setTemperatureSensorValue(int temperature) {
+        if (NULL == _pService) return;
 
-    int max6675Temperature() {
-        return _max6675Temperature;
+        _pService->setTemperature(temperature);
     }
 }

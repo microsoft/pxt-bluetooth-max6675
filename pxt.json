@@ -1,20 +1,17 @@
 {
-    "name": "bluetooth-max6675",
+    "name": "bluetooth-temperature-sensor",
     "version": "0.0.2",
-    "description": "",
+    "description": "A generic Bluetooth service to expose the temperature read from a sensor.",
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "max6675": "github:Microsoft/pxt-max6675#v1.0.1",
         "bluetooth": "*"
     },
     "files": [
         "README.md",
         "extension.cpp",
-        "extension.h",
-        "extension.ts",
-        "service.cpp",
-        "service.h",
+        "TemperatureSensorService.cpp",
+        "TemperatureSensorService.h",
         "shims.d.ts",
         "enums.d.ts"
     ],

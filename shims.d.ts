@@ -2,22 +2,17 @@
 declare namespace bluetooth {
 
     /**
-     *
+     * Starts a custom sensor service. The handler must call ``setSensorTemperature`` 
+     * to update the temperature sent to the service.
      */
-    //% shim=bluetooth::internalStartMax6675Service
-    function internalStartMax6675Service(): boolean;
+    //% block shim=bluetooth::startTemperatureSensorService
+    function startTemperatureSensorService(period: number, handler: () => void): void;
 
     /**
-     *
+     * Sets the current temperature value on the external temperature sensor
      */
-    //% shim=bluetooth::max6675Period
-    function max6675Period(): number;
-
-    /**
-     *
-     */
-    //% shim=bluetooth::max6675SetTemperature
-    function max6675SetTemperature(temperature: number): void;
+    //% block shim=bluetooth::setTemperatureSensorValue
+    function setTemperatureSensorValue(temperature: number): void;
 }
 
 // Auto-generated. Do not edit. Really.

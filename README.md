@@ -1,6 +1,17 @@
-# bluetooth-max6675
+# bluetooth temperature sensor service
 
-A Bluetooth temperature service reading from a MAX6675 device
+A generic Bluetooth service to expose the temperature read from a sensor
+
+## Usage
+
+This package allows to create a Bluetooth temperature sensor and provide the data from
+any custom sensor attached to the @boardname@. In fact, it can be used to stream any data!
+
+```blocks
+bluetooth.startTemperatureSensorService(50, () => {
+    bluetooth.setTemperatureSensorValue(input.lightLevel());
+})
+```
 
 ## License
 
@@ -11,3 +22,7 @@ MIT
 * for PXT/microbit
 (The metadata above is needed for package search.)
 
+```package
+bluetooth
+bluetooth-temperature-sensor
+```
