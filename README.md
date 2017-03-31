@@ -1,6 +1,6 @@
-# bluetooth temperature sensor service
+# Bluetooth MAX6675
 
-A generic Bluetooth service to expose the temperature read from a sensor
+A Bluetooth service that streams the temperature from a MAX6675 temperature probe.
 
 ## Usage
 
