@@ -11,6 +11,8 @@ to start a service that beams the temperature every second.
 bluetooth.startMax6675Service(DigitalPin.P0);
 ```
 
+Then use the temperature charting from [Bitty data logger](http://www.bittysoftware.com/apps/bitty_data_logger.html) to visualize it.
+
 ## Supported targets
 
 * for PXT/microbit
