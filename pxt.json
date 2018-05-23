@@ -6,7 +6,7 @@
     "dependencies": {
         "core": "*",
         "bluetooth-temperature-sensor": "github:Microsoft/pxt-bluetooth-temperature-sensor#v0.0.9",
-        "max6675": "github:Microsoft/pxt-max6675#v1.0.1"
+        "max6675": "github:Microsoft/pxt-max6675#v1.0.3"
     },
     "files": [
         "README.md",
