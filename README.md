@@ -18,11 +18,6 @@ Then use the temperature charting from [Bitty data logger](http://www.bittysoftw
 * for PXT/microbit
 (The metadata above is needed for package search.)
 
-```package
-bluetooth
-bluetooth-temperature-sensor
-bluetooth-max6675
-```
 
 ## License
 
