@@ -20,8 +20,6 @@ Then use the temperature charting from [Bitty data logger](http://www.bittysoftw
 
 ```package
 bluetooth
-bluetooth-temperature-sensor
-bluetooth-max6675
 ```
 
 ## License
